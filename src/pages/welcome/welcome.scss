@@ -3,7 +3,7 @@ page-welcome {
     position: relative;
     background: url('../assets/img/splashbg.png') no-repeat transparent;
     background-size: cover;
-    height: 45%;
+    height: 35%;
     z-index: 1;
     background-repeat: repeat-x;
     animation: animatedBackground 40s linear infinite;
@@ -21,7 +21,7 @@ page-welcome {
     text-align: center;
   }
   .splash-logo {
-    margin: auto;
+    margin: 20px auto;
     background: url('../assets/img/appicon.png') repeat transparent;
     background-size: 100%;
     width: 128px;
@@ -32,6 +32,7 @@ page-welcome {
     font-weight: bold;
     max-width: 80%;
     margin: auto;
+    color: #fff;
   }
   button.login {
     margin-top: 25px;
@@ -42,5 +43,17 @@ page-welcome {
     &.activated {
       background-color: rgb(220, 220, 220);
     }
+  }
+  .loginForm ion-item,
+  .signupForm ion-item {
+    margin-bottom: 1px;
+  }
+  .signupLink, .loginLink {
+    color: #fff;
+    text-align: center;
+    display: block;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 10px;
   }
 }

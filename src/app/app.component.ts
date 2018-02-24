@@ -39,13 +39,19 @@ export class MyApp {
     { title: 'Content', component: 'ContentPage' },
     { title: 'Login', component: 'LoginPage' },
     { title: 'Signup', component: 'SignupPage' },
-    { title: 'Master Detail', component: 'ListMasterPage' },
+    { title: 'Request List', component: 'RequestListPage' },
     { title: 'Menu', component: 'MenuPage' },
-    { title: 'Settings', component: 'SettingsPage' },
+    { title: 'Events', component: 'EventsPage' },
     { title: 'Search', component: 'SearchPage' }
   ]
 
-  constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
+  constructor(
+    private translate: TranslateService,
+    platform: Platform,
+    settings: Settings,
+    private config: Config,
+    private statusBar: StatusBar,
+    private splashScreen: SplashScreen) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

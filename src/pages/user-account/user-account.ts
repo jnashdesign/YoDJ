@@ -2,13 +2,14 @@ import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera } from '@ionic-native/camera';
 import { IonicPage, NavController, ViewController } from 'ionic-angular';
+import * as $ from 'jQuery';
 
 @IonicPage()
 @Component({
-  selector: 'page-item-create',
-  templateUrl: 'item-create.html'
+  selector: 'page-user-account',
+  templateUrl: 'user-account.html'
 })
-export class ItemCreatePage {
+export class UserAccountPage {
   @ViewChild('fileInput') fileInput;
 
   isReadyToSave: boolean;
@@ -17,11 +18,28 @@ export class ItemCreatePage {
 
   form: FormGroup;
 
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera) {
+  profileTabs: any;
+
+  constructor(
+    public navCtrl: NavController,
+    public viewCtrl: ViewController,
+    formBuilder: FormBuilder,
+    public camera: Camera) {
+
+      this.profileTabs = 'profile';
+
+    let profilePic;
+    if (localStorage.getItem('userPhoto') === 'null'){
+      profilePic = 'https://mydjapp.jnashdev.com/images/kanye.jpg';
+      localStorage.setItem('userPhoto', profilePic)
+    }else{
+      profilePic = localStorage.getItem('userPhoto');
+    };
+
     this.form = formBuilder.group({
-      profilePic: [''],
-      name: ['', Validators.required],
-      about: ['']
+      profilePic: [profilePic],
+      email: [localStorage.getItem('userEmail'), Validators.required],
+      about: ['I love you more than Kanye loves Kanye...']
     });
 
     // Watch the form for changes, and
@@ -31,7 +49,11 @@ export class ItemCreatePage {
   }
 
   ionViewDidLoad() {
+    let profilePic = localStorage.getItem('userPhoto');
+    $('.profile-image').append(`<img src="${profilePic}" />`);
+  }
 
+  ionViewDidEnter(){
   }
 
   getPicture() {

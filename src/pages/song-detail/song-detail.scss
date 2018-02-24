@@ -1,0 +1,19 @@
+page-song-detail {
+  h2,p {
+    color: #111;
+    padding-left: 10px;
+    margin-left: 0px;
+  }
+  .item-profile {
+    width: 100%;
+    background-position: center center;
+    background-size: cover;
+    height: 250px;
+  }
+
+  .item-detail {
+    width: 100%;
+    background: white;
+    position: absolute;
+  }
+}

@@ -1,0 +1,23 @@
+events-settings{
+    ion-content{
+        ion-card.card {
+          background: #111;
+          color: #fff !important;
+          max-width: calc(50% - 10px);
+          float: left;
+          margin: 5px;
+            ion-card-title {
+              font-weight: bold;
+              font-size: 22px;
+            }
+            .adInfo {
+              font-weight: 12px;
+              color: #fff;
+              margin-top: 10px;
+            }
+        }
+        ion-card.card:nth-child(even) {
+          clear: both;
+        }
+     }
+  }

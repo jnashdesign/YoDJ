@@ -3,11 +3,29 @@
   <div class="splash-info">
     <div class="splash-logo"></div>
     <div class="splash-intro">
-      {{ 'WELCOME_INTRO' | translate }}
+      Ahh yeah! That's My Song!
     </div>
   </div>
   <div padding>
-    <button ion-button block (click)="signup()">{{ 'SIGNUP' | translate }}</button>
-    <button ion-button block (click)="login()" class="login">{{ 'LOGIN' | translate }}</button>
+      <ion-list>
+
+        <ion-item class="loginInput">
+          <ion-label fixed>Email</ion-label>
+          <ion-input type="email" [(ngModel)]="user.email" name="email"></ion-input>
+        </ion-item>
+
+        <ion-item class="loginInput">
+          <ion-label fixed>Password</ion-label>
+          <ion-input type="password" [(ngModel)]="user.password" name="password"></ion-input>
+        </ion-item>
+
+        <div padding>
+          <button style="display:none" class="signupButton" (click)="doSignup(user)" ion-button color="primary" block>SIGNUP</button>
+          <button class="loginButton" (click)="doLogin(user)" ion-button color="primary" block>LOGIN</button>
+        </div>
+
+      </ion-list>
+      <a (click)="signupClick()" class="signupLink">Don't Have An Account? Sign Up!</a>
+      <a (click)="loginClick()" class="loginLink" style="display:none;">Back to Login</a>
   </div>
 </ion-content>

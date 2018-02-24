@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, MenuController, NavController, Platform } from 'ionic-angular';
-
 import { TranslateService } from '@ngx-translate/core';
+import { MainPage } from '../pages';
+import * as $ from 'jQuery';
 
 export interface Slide {
   title: string;
@@ -19,8 +20,17 @@ export class TutorialPage {
   showSkip = true;
   dir: string = 'ltr';
 
-  constructor(public navCtrl: NavController, public menu: MenuController, translate: TranslateService, public platform: Platform) {
+  constructor(
+    public navCtrl: NavController,
+    public menu: MenuController,
+    translate: TranslateService,
+    public platform: Platform) {
     this.dir = platform.dir();
+
+    if (localStorage.getItem('loggedIn') === 'true'){
+      this.navCtrl.push(MainPage);
+    }
+
     translate.get(["TUTORIAL_SLIDE1_TITLE",
       "TUTORIAL_SLIDE1_DESCRIPTION",
       "TUTORIAL_SLIDE2_TITLE",
@@ -51,6 +61,16 @@ export class TutorialPage {
   }
 
   startApp() {
+    $.ajax({
+        type: 'GET',
+        url: 'https://mydjapp-2b450.firebaseio.com/ads.json',
+        dataType: 'json',
+        success: function(res) {
+          localStorage.setItem('ads',JSON.stringify(res));
+          this.currentAds = res;
+        }
+    });
+
     this.navCtrl.setRoot('WelcomePage', {}, {
       animate: true,
       direction: 'forward'

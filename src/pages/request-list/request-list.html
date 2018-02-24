@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-list>
+      <img class="logo" src="assets/img/nightOwl.svg">
+      <ion-item>
+        <ion-select [(ngModel)]="location" (ionChange)="setLocation()">
+          <ion-option value="---" checked="true">Choose a Location</ion-option>
+          <ion-option value="TRUTH Nightclub">TRUTH Nightclub</ion-option>
+          <ion-option value="Medusa Dallas">Medusa Dallas</ion-option>
+          <ion-option value="Park Ave Dallas">Park Avenue Dallas</ion-option>
+          <ion-option value="PRIME Bar">PRIME Bar</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-icon (click)="openAccountPage()" class="userAccount" name="contact" end></ion-icon>
+    </ion-list>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+<h2>Requests at "{{location}}"</h2>
+
+<div id="songList">
+  <ion-card *ngFor="let item of currentItems" id="{{item.requestTotal}}">
+    <div class="imgContainer" [style.background-image]="'url('+item.img_url+')'">
+    </div>
+    <img class="artistIMG" (click)="openItem(item)" [src]="item.img_url">
+    <span class="number"></span>
+    <h2>{{item.title}}</h2>
+    <ion-row>
+      <ion-col>
+        <ion-card-content>
+          <p>{{item.artist}}</p>
+        </ion-card-content>
+      </ion-col>
+      <ion-col class="right">
+        <button ion-button icon-left clear small>
+          <ion-icon name="heart"></ion-icon>
+          <div>{{item.requestTotal}} Requests</div>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</div>
+</ion-content>

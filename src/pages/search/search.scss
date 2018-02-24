@@ -1,3 +1,39 @@
 page-search {
-
+  button.searchButton {
+    margin: 0 auto;
+    width: calc(100% - 15px);
+    height: 2.5em;
+    display: block;
+    position: relative;
+    background-color: #990000;
+    font-weight: bold;
+      &.activated {
+        background-color: #520000;
+      }
+  }
+  .searchResults {
+    margin-top: 10px;
+    color:#fff;
+    padding: 10px;
+    button {
+      display: block;
+      width:100%;
+      position: relative;
+      text-align: left;
+      background-color: #121212;
+      color:#fff;
+      margin: 2px auto;
+    }
+    h2 {
+      font-size: 18px;
+      line-height: 1em;
+    }
+    img {
+      max-width: 60px;
+      max-height: 60px;
+      margin-right: 10px;
+      float:left;
+      margin-left: -10px;
+    }
+  }
 }

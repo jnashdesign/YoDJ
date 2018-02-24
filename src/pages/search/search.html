@@ -1,22 +1,26 @@
 <ion-header>
-
   <ion-navbar>
-    <ion-title>{{ 'SEARCH_TITLE' | translate }}</ion-title>
+    <ion-list>
+      <img class="logo" src="assets/img/nightOwl.svg">
+      <ion-item>
+        <ion-select [(ngModel)]="location" (ionChange)="setLocation()">
+          <ion-option value="---" checked="true">Choose a Location</ion-option>
+          <ion-option value="TRUTH Nightclub">TRUTH Nightclub</ion-option>
+          <ion-option value="Medusa Dallas">Medusa Dallas</ion-option>
+          <ion-option value="Park Ave Dallas">Park Avenue Dallas</ion-option>
+          <ion-option value="PRIME Bar">PRIME Bar</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-icon (click)="openAccountPage()" class="userAccount" name="contact" end></ion-icon>
+    </ion-list>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content>
-  <ion-searchbar (ionInput)="getItems($event)" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}"></ion-searchbar>
-  <ion-list>
-    <button ion-item (click)="openItem(item)" *ngFor="let item of currentItems">
-      <ion-avatar item-start>
-        <img [src]="item.profilePic" />
-      </ion-avatar>
-      <h2>{{item.name}}</h2>
-      <p>{{item.about}}</p>
-      <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>
-    </button>
+  <h2>Find Your Song</h2>
+  <ion-searchbar [(ngModel)]="searchBar" placeholder="Search the items list, e.g. 'Kanye West'">
+  </ion-searchbar>
+  <button class="searchButton" ion-button (click)="getItems()" full>Search</button>
+  <ion-list class="searchResults">
   </ion-list>
 </ion-content>

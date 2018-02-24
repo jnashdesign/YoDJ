@@ -15,18 +15,19 @@
   "MAP_TITLE": "Map",
 
   "TUTORIAL_SKIP_BUTTON": "Skip",
-  "TUTORIAL_CONTINUE_BUTTON": "Continue",
+  "TUTORIAL_CONTINUE_BUTTON": "Let's Do It!",
 
-  "TUTORIAL_SLIDE1_TITLE": "Welcome to the Ionic Super Starter",
-  "TUTORIAL_SLIDE1_DESCRIPTION": "The <b>Ionic Super Starter</b> is a fully-featured Ionic starter with many pre-built pages and best practices.",
+  "TUTORIAL_SLIDE1_TITLE": "Welcome to Night Owl!",
+  "TUTORIAL_SLIDE1_DESCRIPTION": "The easiest way to hear your song",
 
-  "TUTORIAL_SLIDE2_TITLE": "How to use the Super Starter",
-  "TUTORIAL_SLIDE2_DESCRIPTION": "Assemble the various page types you want and remove the ones you don't. We've provided many common mobile app page layouts, like login and signup pages, tabs, and this tutorial page.",
+  "TUTORIAL_SLIDE2_TITLE": "Tell the DJ",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "Ever wanted to let the DJ know what song you want played?",
 
-  "TUTORIAL_SLIDE3_TITLE": "Getting Started",
-  "TUTORIAL_SLIDE3_DESCRIPTION": "Need help? Check out the Super Starter README for a full tutorial",
+  "TUTORIAL_SLIDE3_TITLE": "Send Request",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "Just pull out your phone and instantly the DJ will see your request.",
 
-  "TUTORIAL_SLIDE4_TITLE": "Ready to Play?",
+  "TUTORIAL_SLIDE4_TITLE": "Get It Voted to the Top",
+  "TUTORIAL_SLIDE4_DESCRIPTION": "Encourage your friends to make your song the most requested.",
 
   "WELCOME_INTRO": "The starting point for your next great Ionic app",
 
@@ -54,8 +55,8 @@
   "ITEM_CREATE_TITLE": "New Item",
   "ITEM_CREATE_CHOOSE_IMAGE": "Add Image",
 
-  "ITEM_NAME_PLACEHOLDER": "Name",
-  "ITEM_ABOUT_PLACEHOLDER": "About",
+  "ITEM_NAME_PLACEHOLDER": "Yeezus",
+  "ITEM_ABOUT_PLACEHOLDER": "I love you more than Kanye loves Kanye.",
 
   "DONE_BUTTON": "Done",
   "CANCEL_BUTTON": "Cancel",

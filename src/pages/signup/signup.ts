@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
-
-import { User } from '../../providers/providers';
-import { MainPage } from '../pages';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { User } from '../../models/user';
 
 @IonicPage()
 @Component({
@@ -20,34 +19,22 @@ export class SignupPage {
     password: 'test'
   };
 
-  // Our translated text strings
-  private signupErrorString: string;
+  user = {} as User;
 
-  constructor(public navCtrl: NavController,
-    public user: User,
+  constructor(
+    private AFauth: AngularFireAuth,
+    public navCtrl: NavController,
     public toastCtrl: ToastController,
     public translateService: TranslateService) {
-
-    this.translateService.get('SIGNUP_ERROR').subscribe((value) => {
-      this.signupErrorString = value;
-    })
   }
 
-  doSignup() {
-    // Attempt to login in through our User service
-    this.user.signup(this.account).subscribe((resp) => {
-      this.navCtrl.push(MainPage);
-    }, (err) => {
-
-      this.navCtrl.push(MainPage);
-
-      // Unable to sign up
-      let toast = this.toastCtrl.create({
-        message: this.signupErrorString,
-        duration: 3000,
-        position: 'top'
-      });
-      toast.present();
-    });
+  async doSignup(user: User) {
+    try{
+      const result = await this.AFauth.auth.createUserWithEmailAndPassword(user.email, user.password);
+      console.log(result);
+    }
+    catch(e){
+      console.error(e);
+    }
   }
 }

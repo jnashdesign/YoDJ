@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <ion-list>
+      <img class="logo" src="assets/img/nightOwl.svg">
+      <ion-item>
+        <ion-select [(ngModel)]="location" (ionChange)="setLocation()">
+          <ion-option value="---" checked="true">Choose a Location</ion-option>
+          <ion-option value="TRUTH Nightclub">TRUTH Nightclub</ion-option>
+          <ion-option value="Medusa Dallas">Medusa Dallas</ion-option>
+          <ion-option value="Park Ave Dallas">Park Avenue Dallas</ion-option>
+          <ion-option value="PRIME Bar">PRIME Bar</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-icon (click)="openAccountPage()" class="userAccount" name="contact" end></ion-icon>
+    </ion-list>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+<h2>Upcoming Events</h2>
+<ion-card *ngFor="let ad of currentAds">
+    <img [src]="ad.photo"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{ad.title}}
+      </ion-card-title>
+      <p>{{ad.desc}}</p>
+      <p class="adInfo"><strong>{{ad.location}}</strong><br>{{ad.date}}</p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

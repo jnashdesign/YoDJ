@@ -14,3 +14,144 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+ion-app {
+  border-top: 20px solid #fff;
+}
+ion-card-title.card-title,
+ion-select.select,
+.slide-zoom button {
+  color:#fff;
+}
+button.item {
+    background: #222;
+    border-top: 1px solid #111 !important;
+    &.activated {
+      background-color: #111;
+    }
+}
+button.button-block,
+.swiper-pagination-bullet-active {
+  background-color: #990000;
+}
+button.button-block.activated {
+  background-color: #490202;
+}
+ion-row {
+  display: table !important;
+  ion-col {
+    display: table-cell;
+    p {
+      vertical-align: bottom;
+      margin-top: -10px !important;
+    }
+    &.right {
+      text-align: right;
+      background-color: #000;
+      vertical-align: bottom;
+    }
+  }
+}
+
+.bar-button-default-ios,
+.bar-button-default.bar-button-ios-default,
+.bar-button-clear-ios-default,
+.tabs-ios .tab-button[aria-selected=true] .tab-button-icon,
+.bar-button-primary-ios,
+.bar-button-default.bar-button-ios-primary,
+.bar-button-clear-ios-primary {
+  color: #fff;
+  margin-right:10px;
+}
+
+page-request-list button.button-clear {
+  color:#990000;
+  font-weight: bold;
+}
+
+.tabbar.show-tabbar {
+  border:0px;
+  a {
+    background: #151515;
+    padding: 5px;
+    &[aria-selected=true] {
+      background: #000;
+      color: #fff !important;
+    }
+  }
+}
+.header-ios .toolbar-background {
+  background-color: #000;
+  color: #fff;
+}
+.ion-page > ion-content {
+  background-color: #222;
+}
+ion-header .item-block {
+    width: 50%;
+    float: left;
+    margin-top: 5px;
+    background: transparent;
+}
+h2 {
+  margin: 10px;
+  color:#fff;
+}
+.item-block .item-inner {
+  border-bottom: 0 !important;
+}
+ion-item.item-block {
+  margin-bottom: 2px;
+  border: none !important;
+  background-color: rgba(0,0,0,0.2);
+  color: #fff;
+}
+ion-select {
+  min-width:100%;
+  text-align: center;
+}
+ion-list {
+  display: table;
+  &.list {
+      width: 100%;
+      margin-bottom: 0 !important;
+  }
+  img, ion-item, ion-select,ion-icon {
+    display:table-cell;
+    vertical-align: middle;
+  }
+
+}
+ion-content {
+  ion-card.card {
+    background:#111;
+    color:#fff !important;
+    h2 {
+      padding: 10px 10px 0px 15px;
+      font-size: 24px;
+      font-weight: bold;
+      color:#fff;
+    }
+  }
+}
+.select-icon {
+  margin: 0 auto;
+  cursor: pointer;
+    .select-icon-inner{
+      color: #fff !important;
+    }
+}
+.userAccount {
+  font-size: 36px;
+  color: #fff;
+  cursor: pointer;
+  text-align: right;
+  padding-right: 10px;
+  display: block;
+  padding-top: 15px;
+}
+.logo {
+    width: 60px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+}
