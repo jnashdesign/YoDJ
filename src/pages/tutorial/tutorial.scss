@@ -37,11 +37,21 @@ page-tutorial {
         color: #000000;
       }
   }
+  .swiper-pagination-fraction,
+  .swiper-pagination-custom,
+  .swiper-container-horizontal > .swiper-pagination-bullets {
+    bottom: 40px;
+  }
   .swiper-pagination-bullet {
-    height:10px;
-    width: 40px;
+    height:8px;
+    width: 15%;
     border-radius: 0;
     margin: -30px 10px !important;
+    background-color:#000;
+    opacity: 1;
+      &.swiper-pagination-bullet-active {
+        background-color: #990000 !important;
+      }
   }
 
 }

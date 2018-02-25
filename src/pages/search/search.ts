@@ -65,8 +65,8 @@ export class SearchPage {
           $('.searchResults button').off('click').on('click',function (){
             let songName    = $('h2', this).text(),
                 artistName  = $('p', this).text(),
-                eventName   = 'nightOwlEvent',
-                userName    = 'nightOwlTestUser',
+                eventName   = 'testEvent2',
+                userName    = localStorage.getItem('userEmail'),
                 img_url     = $(this).find("img").attr("src");
 
                 alert(`${songName} by ${artistName} has been added`);
