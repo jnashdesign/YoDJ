@@ -12,13 +12,19 @@ import * as $ from 'jQuery';
 export class RequestListPage {
   currentItems: Items[];
   items:any;
-  location: string;
+  venue: string;
   number: any;
+  songName: string;
+  artistName: string;
+  eventName: string;
+  userName: string;
+  img_url: string;
+  requestTotalNum: any;
 
   constructor(
     public navCtrl: NavController,
     public modalCtrl: ModalController) {
-      this.location = localStorage.getItem('location');
+      this.venue = localStorage.getItem('venue');
       this.currentItems = JSON.parse(localStorage.getItem('songs'));
   }
 
@@ -48,10 +54,35 @@ export class RequestListPage {
 
   }
 
-  /**
-   * Prompt the user to add a new item. This shows our ItemCreatePage in a
-   * modal and then adds the new item to our data source if the user created one.
-   */
+// requestAgain(){
+//   $('.requestAgain').off('click').on('click',function (){
+//     let songName          = $(this).data('title'),
+//         artistName        = $(this).data('artist'),
+//         eventName         = localStorage.getItem('venue'),
+//         userName          = localStorage.getItem('userEmail'),
+//         img_url           = $(this).data('img_url'),
+//         requestTotalNum   = $(this).data('requestTotal');
+//
+//         alert(`${songName} by ${artistName} has been added`);
+//
+//     $.ajax({
+//         type:'POST',
+//         url: `https://us-central1-mydjapp-2b450.cloudfunctions.net/songRequest?songName=${songName}&artistName=${artistName}&image=${img_url}&requestTotal=1&userName=${userName}&eventName=${eventName}`,
+//         dataType: 'json',
+//         success: function(result) {
+//           if(result.status === "success") {
+//               // do something with response.message or whatever other data on success
+//
+//               } else if(result.status === "error") {
+//                   // do something with response.message or whatever other data on error
+//               }
+//             }
+//           });
+//
+//
+//     })
+// }
+
   addItem() {
     let addModal = this.modalCtrl.create('ItemCreatePage');
     addModal.onDidDismiss(item => {

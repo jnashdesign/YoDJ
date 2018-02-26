@@ -11,7 +11,7 @@ import * as $ from 'jQuery';
 export class SearchPage {
 
   currentItems: any = [];
-  location: string;
+  venue: string;
   searchedSongs: any = [];
   searchBar: any;
 
@@ -19,12 +19,12 @@ export class SearchPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public items: Items) {
-        this.location = localStorage.getItem('location');
+        this.venue = localStorage.getItem('venue');
         this.currentItems = JSON.parse(localStorage.getItem('songs'));
     }
 
   setLocation(){
-    localStorage.setItem('location',this.location);
+    localStorage.setItem('venue',this.venue);
   }
   getItems() {
     let val = this.searchBar;
@@ -65,7 +65,7 @@ export class SearchPage {
           $('.searchResults button').off('click').on('click',function (){
             let songName    = $('h2', this).text(),
                 artistName  = $('p', this).text(),
-                eventName   = 'testEvent2',
+                eventName   = localStorage.getItem('venue'),
                 userName    = localStorage.getItem('userEmail'),
                 img_url     = $(this).find("img").attr("src");
 

@@ -3,7 +3,7 @@
     <ion-list>
       <img class="logo" src="assets/img/yoDJ.svg">
       <ion-item>
-        <ion-select [(ngModel)]="location" (ionChange)="setLocation()">
+        <ion-select [(ngModel)]="venue" (ionChange)="setVenue()">
           <ion-option value="---" checked="true">Choose a Location</ion-option>
           <ion-option value="TRUTH Nightclub">TRUTH Nightclub</ion-option>
           <ion-option value="Medusa Dallas">Medusa Dallas</ion-option>
@@ -17,7 +17,7 @@
 </ion-header>
 
 <ion-content>
-<h2>Requests at "{{location}}"</h2>
+<h2>Requests at "{{venue}}"</h2>
 
 <div id="songList">
   <ion-card *ngFor="let item of currentItems" id="{{item.requestTotal}}">
@@ -33,9 +33,9 @@
         </ion-card-content>
       </ion-col>
       <ion-col class="right">
-        <button ion-button icon-left clear small>
+        <button ion-button icon-left clear small (click)="requestAgain()">
           <ion-icon name="heart"></ion-icon>
-          <div>{{item.requestTotal}} Requests</div>
+          <div><span class="requestTotalNum">{{item.requestTotal}}</span> Requests</div>
         </button>
       </ion-col>
     </ion-row>

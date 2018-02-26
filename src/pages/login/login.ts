@@ -31,8 +31,6 @@ export class LoginPage {
 
   // Attempt to login in through our User service
   doLogin() {
-
-
       let toast = this.toastCtrl.create({
         message: this.loginErrorString,
         duration: 3000,
@@ -43,14 +41,34 @@ export class LoginPage {
       toast.present();
 
     $.ajax({
-        type: 'GET',
-        url: 'https://mydjapp-2b450.firebaseio.com/events.json',
-        dataType: 'json',
-        success: function(gotInfo) {
-          localStorage.setItem('songs',JSON.stringify(gotInfo.testEvent2));
-          this.currentItems = JSON.stringify(gotInfo.testEvent2);
-        }
-    });
+    type: 'GET',
+    url: 'https://mydjapp-2b450.firebaseio.com/events.json',
+    dataType: 'json',
+    success: function(gotInfo) {
+
+      $('#songList').empty();
+
+        var eventInfo 			= 	gotInfo.testEvent1.songList,
+            songArray       =   [],
+                    i       =   1;
+
+            $.each(eventInfo, function(index, value) {
+              var songName        = 	value.title,
+                  songArtist      =   value.artist,
+                  songImg         =   value.img_url,
+                  songRequestor   =   value.user,
+                  requestTotal    =   parseInt(value.requestTotal),
+                  number          =   i++;
+
+              songArray.push(value);
+
+              });
+
+              localStorage.setItem('Login-songs',JSON.stringify(songArray));
+          }
+      });
+
+
 
   }
 }
