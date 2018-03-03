@@ -12,7 +12,7 @@ import * as $ from 'jQuery';
 export class RequestListPage {
   currentItems: Items[];
   items:any;
-  venue: string;
+  myDJ: string;
   number: any;
   songName: string;
   artistName: string;
@@ -24,41 +24,74 @@ export class RequestListPage {
   constructor(
     public navCtrl: NavController,
     public modalCtrl: ModalController) {
-      this.venue = localStorage.getItem('venue');
-      this.currentItems = JSON.parse(localStorage.getItem('songs'));
+      this.myDJ = localStorage.getItem('myDJ');
+      this.currentItems = JSON.parse(localStorage.getItem(this.myDJ));
   }
 
-  /**
-   * The view loaded, let's query our items for the list
-   */
   ionViewDidLoad() {
-    var $songList = $('#songList'),
-        $songListCard = $songList.children('ion-card');
-
-      $songListCard.sort(function(a,b){
-        var an = parseInt(a.getAttribute('id')),
-            bn = parseInt(b.getAttribute('id'));
-        if(an > bn) {
-          return -1;
-        }
-        if(an < bn) {
-          return 1;
-        }
-      });
-      $songListCard.detach().appendTo($songList);
-
-      let num = 1;
-      $('#songList ion-card .number').each(function(){
-        $(this).html(num++);
-      });
-
+    setInterval(this.getSongList, 3 * 1000);
   }
 
+  setMyDJ(){
+    localStorage.setItem('myDJ',this.myDJ);
+    this.currentItems = JSON.parse(localStorage.getItem(this.myDJ));
+  }
+
+  getSongList(){
+    $.ajax({
+    type: 'GET',
+    url: 'https://mydjapp-2b450.firebaseio.com/events.json',
+    dataType: 'json',
+    success: function(gotInfo) {
+
+      $.each(gotInfo, function(index, value) {
+        let         dj      =   index,
+            songArray       =   [],
+                    i       =   1;
+
+            $.each(value, function(index, value) {
+              let songName        =   value.title,
+                  songArtist      =   value.artist,
+                  songImg         =   value.img_url,
+                  songRequestor   =   value.user,
+                  requestTotal    =   parseInt(value.requestTotal),
+                  number          =   i++;
+
+              songArray.push(value);
+              });
+              localStorage.setItem(`${dj}`,JSON.stringify(songArray));
+              this.currentItems = JSON.parse(localStorage.getItem(this.myDJ));
+            });
+
+            var $songList = $('#songList'),
+                $songListCard = $songList.children('ion-card');
+
+              $songListCard.sort(function(a,b){
+                var an = parseInt(a.getAttribute('id')),
+                    bn = parseInt(b.getAttribute('id'));
+                if(an > bn) {
+                  return -1;
+                }
+                if(an < bn) {
+                  return 1;
+                }
+              });
+              $songListCard.detach().appendTo($songList);
+
+              let num = 1;
+              $('#songList ion-card .number').each(function(){
+                $(this).html(num++);
+              });
+
+          }
+      });
+      console.log('gotNewSongs');
+  }
 // requestAgain(){
 //   $('.requestAgain').off('click').on('click',function (){
 //     let songName          = $(this).data('title'),
 //         artistName        = $(this).data('artist'),
-//         eventName         = localStorage.getItem('venue'),
+//         eventName         = localStorage.getItem('myDJ'),
 //         userName          = localStorage.getItem('userEmail'),
 //         img_url           = $(this).data('img_url'),
 //         requestTotalNum   = $(this).data('requestTotal');

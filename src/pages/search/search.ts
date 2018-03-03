@@ -11,7 +11,7 @@ import * as $ from 'jQuery';
 export class SearchPage {
 
   currentItems: any = [];
-  venue: string;
+  myDJ: string;
   searchedSongs: any = [];
   searchBar: any;
 
@@ -19,12 +19,12 @@ export class SearchPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public items: Items) {
-        this.venue = localStorage.getItem('venue');
-        this.currentItems = JSON.parse(localStorage.getItem('songs'));
+      this.myDJ = localStorage.getItem('myDJ');
+      this.currentItems = JSON.parse(localStorage.getItem('songs'));
     }
 
-  setLocation(){
-    localStorage.setItem('venue',this.venue);
+  setMyDJ(){
+    localStorage.setItem('myDJ',this.myDJ);
   }
   getItems() {
     let val = this.searchBar;
@@ -40,7 +40,7 @@ export class SearchPage {
       url: `https://ws.audioscrobbler.com/2.0?method=track.search&track=${val}&api_key=${api_key}&format=json&limit=${limit}`,
       dataType: 'json',
       success: function(output) {
-        // alert(JSON.stringify(output.results.trackmatches.track));
+
         $('.searchResults').html('');
         let searchedSongs = output.results.trackmatches.track;
         console.log(JSON.stringify(searchedSongs));
@@ -65,7 +65,7 @@ export class SearchPage {
           $('.searchResults button').off('click').on('click',function (){
             let songName    = $('h2', this).text(),
                 artistName  = $('p', this).text(),
-                eventName   = localStorage.getItem('venue'),
+                eventName   = localStorage.getItem('myDJ'),
                 userName    = localStorage.getItem('userEmail'),
                 img_url     = $(this).find("img").attr("src");
 

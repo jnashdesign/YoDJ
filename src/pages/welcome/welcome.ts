@@ -16,14 +16,13 @@ export class WelcomePage {
   user = {} as User;
   email:string;
   password:string;
-  venue:string;
+  myDJ:string;
 
   constructor(
     private AFauth: AngularFireAuth,
     public navCtrl: NavController,
     public toastCtrl: ToastController,
     public translateService: TranslateService) {
-      this.venue = 'TRUTH Nightclub';
   }
 
   // Attempt to login in through our User service
@@ -37,7 +36,7 @@ export class WelcomePage {
     localStorage.setItem('userEmail', result.email);
     localStorage.setItem('userPhoto', result.photoURL);
     localStorage.setItem('loggedIn', 'true');
-    localStorage.setItem('venue','TRUTH Nightclub');
+    localStorage.setItem('myDJ','DJSteveNice');
     localStorage.setItem('username', 'nightOwlTestUser');
 
     $.ajax({
@@ -46,14 +45,13 @@ export class WelcomePage {
     dataType: 'json',
     success: function(gotInfo) {
 
-      $('#songList').empty();
-
-        var eventInfo 			= 	gotInfo.nightOwlEvent,
+      $.each(gotInfo, function(index, value) {
+        let         dj      =   index,
             songArray       =   [],
                     i       =   1;
 
-            $.each(eventInfo, function(index, value) {
-              var songName        = 	value.title,
+            $.each(value, function(index, value) {
+              let songName        =   value.title,
                   songArtist      =   value.artist,
                   songImg         =   value.img_url,
                   songRequestor   =   value.user,
@@ -62,7 +60,8 @@ export class WelcomePage {
 
               songArray.push(value);
               });
-              localStorage.setItem('songs',JSON.stringify(songArray));
+              localStorage.setItem(`${dj}`,JSON.stringify(songArray));
+            });
           }
       });
 

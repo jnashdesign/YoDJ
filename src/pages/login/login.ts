@@ -48,7 +48,7 @@ export class LoginPage {
 
       $('#songList').empty();
 
-        var eventInfo 			= 	gotInfo.testEvent1.songList,
+        var eventInfo 			= 	gotInfo.nightOwlEvent.songList,
             songArray       =   [],
                     i       =   1;
 

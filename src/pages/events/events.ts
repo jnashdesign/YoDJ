@@ -12,14 +12,17 @@ import * as $ from 'jQuery';
 export class EventsPage {
   currentAds: Ads[];
   ads: any;
-  venue: string;
+  myDJ: string;
   page: string = 'main';
 
   constructor(
     public navCtrl: NavController,
     public modalCtrl: ModalController) {
-      this.venue = localStorage.getItem('venue');
+      this.myDJ = localStorage.getItem('myDJ');
       this.currentAds = JSON.parse(localStorage.getItem('ads'));
+  }
+  setMyDJ(){
+    localStorage.setItem('myDJ',this.myDJ);
   }
 
   ionViewDidLoad() {

@@ -3,12 +3,11 @@
     <ion-list>
       <img class="logo" src="assets/img/yoDJ.svg">
       <ion-item>
-        <ion-select [(ngModel)]="venue" (ionChange)="setVenue()">
-          <ion-option value="---" checked="true">Choose a Location</ion-option>
-          <ion-option value="TRUTH Nightclub">TRUTH Nightclub</ion-option>
-          <ion-option value="Medusa Dallas">Medusa Dallas</ion-option>
-          <ion-option value="Park Ave Dallas">Park Avenue Dallas</ion-option>
-          <ion-option value="PRIME Bar">PRIME Bar</ion-option>
+        <ion-select [(ngModel)]="myDJ" (ionChange)="setMyDJ()">
+          <ion-option value="ChooseADJ" checked="true">Choose a DJ</ion-option>
+          <ion-option value="DJSteveNice">Steve Nice</ion-option>
+          <ion-option value="HollywoodHernandez">Hollywood Hernandez</ion-option>
+          <ion-option value="ThrowdownSam">Throwdown Sam</ion-option>
         </ion-select>
       </ion-item>
       <ion-icon (click)="openAccountPage()" class="userAccount" name="contact" end></ion-icon>
